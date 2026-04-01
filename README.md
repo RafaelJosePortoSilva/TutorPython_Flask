@@ -63,11 +63,17 @@ app/
 ├── __init__.py
 
 ├── models.py
+
 ├── routes.py
+
 ├── service/
+
 │   ├── desafio_svc.py
+
 │   └── teste_svc.py
+
 ├── templates/
+
 ├── static/
 
 ## Funcionamento do sistema
