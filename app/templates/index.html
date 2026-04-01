@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Desafios</h2>
+
+<div class="list-group">
+    {% for desafio in desafios %}
+        <a href="{{ url_for('main.ver_desafio', desafio_id=desafio.id) }}"
+           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+
+            {{ desafio.nome }}
+
+            <span class="badge 
+                {% if desafio.dificuldade.value == 'facil' %} bg-success
+                {% elif desafio.dificuldade.value == 'medio' %} bg-warning text-dark
+                {% else %} bg-danger
+                {% endif %}
+            ">
+                {{ desafio.dificuldade.value }}
+            </span>
+
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

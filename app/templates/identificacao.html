@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <div class="card p-4 shadow" style="width: 400px;">
+        
+        <h3 class="text-center mb-3">Qual o seu nome?</h3>
+
+        <form method="POST">
+            <input name="nome-estudante" 
+                   type="text" 
+                   class="form-control mb-3"
+                   placeholder="Digite seu nome..."
+                   required>
+
+            <button class="btn btn-primary w-100" type="submit">
+                Entrar
+            </button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

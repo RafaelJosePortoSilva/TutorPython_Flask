@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{{ url_for('main.index') }}" class="btn btn-secondary mb-3">
+    ← Voltar
+</a>
+
+<div class="row" style="height: 80vh;">
+
+    <!-- ESQUERDA -->
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body overflow-auto">
+                <h4>{{ desafio.nome }}</h4>
+
+                <span class="badge 
+                    {% if desafio.dificuldade.value == 'facil' %} bg-success
+                    {% elif desafio.dificuldade.value == 'medio' %} bg-warning text-dark
+                    {% else %} bg-danger
+                    {% endif %}
+                ">
+                    {{ desafio.dificuldade.value }}
+                </span>
+
+                <hr>
+
+                <p>{{ desafio.descricao }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIREITA -->
+    <div class="col-md-8 d-flex flex-column">
+
+        <form method="POST" class="d-flex flex-column flex-grow-1">
+            <textarea id="code-editor" name="codigo">
+{{ codigo or 'def solucao():\n    pass' }}
+            </textarea>
+
+            <button class="btn btn-primary mt-2">
+                Executar
+            </button>
+        </form>
+
+        {% if resultado %}
+        <div class="card mt-2 flex-grow-1 bg-dark text-light">
+            <div class="card-body overflow-auto">
+
+                <h5>Resultado</h5>
+
+                {% if resultado.erro %}
+                    <p class="text-danger">{{ resultado.erro }}</p>
+                {% else %}
+
+                    {% if resultado.sucesso %}
+                        <p class="text-success">✔ Todos passaram</p>
+                    {% else %}
+                        <p class="text-warning">Alguns falharam</p>
+                    {% endif %}
+
+                    <ul class="list-unstyled">
+                        {% for res in resultado.resultados %}
+                            <li class="mb-2">
+                                {% if res.erro %}
+                                    <span class="text-danger">Erro: {{ res.erro }}</span>
+                                {% else %}
+                                    {{ res.entrada }} → {{ res.resultado }}
+                                    {% if res.passou %}
+                                        <span class="text-success">✔</span>
+                                    {% else %}
+                                        <span class="text-danger">✘</span>
+                                    {% endif %}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<!-- CodeMirror -->
+{% block head_extra %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+
+<script>
+    var editor = CodeMirror.fromTextArea(
+        document.getElementById("code-editor"),
+        {
+            mode: "python",
+            theme: "dracula",
+            lineNumbers: true
+        }
+    );
+
+    editor.setSize("100%", "100%");
+
+    document.querySelector("form").addEventListener("submit", function() {
+        editor.save();
+    });
+</script>
+
+{% endblock %}
