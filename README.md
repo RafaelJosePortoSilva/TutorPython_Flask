@@ -58,24 +58,34 @@ python seed.py
 ```
 ## Estrutura do projeto
 
-app/
-
-├── __init__.py
-
-├── models.py
-
-├── routes.py
-
-├── service/
-
-│   ├── desafio_svc.py
-
-│   └── teste_svc.py
-
-├── templates/
-
-├── static/
-
+```md
+├── app
+│   ├── __init__.py
+│   ├── models.py
+│   │
+│   ├── routes.py
+│   ├── service
+│   │   ├── caso_teste_svc.py.py
+│   │   ├── desafio_svc.py
+│   │   └── juiz_svc.py
+│   │
+│   ├── static
+│   │   └── css
+│   │       └── style.css
+│   └── templates
+│       ├── base.html
+│       ├── desafio.html
+│       ├── identificacao.html
+│       └── index.html
+├── config.py
+├── instance
+│   └── tutor.db
+│
+├── README.md
+├── requirements.txt
+├── run.py
+└── seed.py
+```
 ## Funcionamento do sistema
 
 O projeto utiliza o padrão Application Factory, onde a aplicação Flask é criada dinamicamente.
