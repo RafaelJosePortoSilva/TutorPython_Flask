@@ -59,7 +59,9 @@ python seed.py
 ## Estrutura do projeto
 
 app/
+
 ├── __init__.py
+
 ├── models.py
 ├── routes.py
 ├── service/
