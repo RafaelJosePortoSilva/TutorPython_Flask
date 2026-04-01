@@ -93,16 +93,19 @@ O projeto utiliza o padrão Application Factory, onde a aplicação Flask é cri
 Fluxo básico:
 
 1. Usuário informa o nome
+![alt text](imagens_readme/Login.png)
 2. Sistema armazena na session
 3. Lista de desafios é exibida
+![alt text](imagens_readme/Desafios.png)
 4. Usuário seleciona um desafio
 5. Código é enviado para o backend
+![alt text](imagens_readme/Desafio_vazio.png)
 6. O sistema executa os testes automaticamente
 7. Resultado é exibido na tela
+![alt text](imagens_readme/Desafio_completo.png)
 
 ## Observações
-O uso de eval foi utilizado para simplificar a execução dos testes
-Não é recomendado para ambientes de produção
+O uso de eval foi utilizado para simplificar a execução dos testes. Não é recomendado para ambientes de produção
 
 ## Autor
 
