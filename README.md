@@ -88,7 +88,11 @@ python seed.py
 ```
 ## Funcionamento do sistema
 
-O projeto utiliza o padrão Application Factory, onde a aplicação Flask é criada dinamicamente.
+O projeto utiliza um padrão de arquitetura que separa os comandos executáveis e demais arquivos de configuração daqueles que serão utilizados internamente pelo servidor durante o funcionamento.
+
+Dentro de app/ foi separada apenas a camada de service. Nos demais arquivos, as classes foram mantidas todas juntas para evitar aumento de complexidade desproporcional ao projeto.
+
+O __init__.py separado de run.py,que juntos substituem o app.py - o padrão da documentação - é uma adaptação para app/ funcionar sem problemas com importação dos módulos, e centralizar as dependências: o que torna o código mais adaptável.
 
 Fluxo básico:
 
