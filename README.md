@@ -56,36 +56,7 @@ http://127.0.0.1:5000
 ```bash
 python seed.py
 ```
-## Estrutura do projeto
 
-```md
-├── app
-│   ├── __init__.py
-│   ├── models.py
-│   │
-│   ├── routes.py
-│   ├── service
-│   │   ├── caso_teste_svc.py.py
-│   │   ├── desafio_svc.py
-│   │   └── juiz_svc.py
-│   │
-│   ├── static
-│   │   └── css
-│   │       └── style.css
-│   └── templates
-│       ├── base.html
-│       ├── desafio.html
-│       ├── identificacao.html
-│       └── index.html
-├── config.py
-├── instance
-│   └── tutor.db
-│
-├── README.md
-├── requirements.txt
-├── run.py
-└── seed.py
-```
 ## Funcionamento do sistema
 
 O projeto utiliza um padrão de arquitetura que separa os comandos executáveis e demais arquivos de configuração daqueles que serão utilizados internamente pelo servidor durante o funcionamento.
